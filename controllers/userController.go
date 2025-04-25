@@ -114,7 +114,7 @@ func Login(c *gin.Context) {
 
 	// Set the token in cookie
 	c.SetSameSite(http.SameSiteNoneMode)
-	c.SetCookie("Authorization", tokenString, 3600*72, "/", "", true, true)
+	c.SetCookie("Authorization", tokenString, 3600*72, "/", "localhost", true, true)
 
 	// Return the token in the response
 	c.JSON(http.StatusOK, gin.H{
@@ -127,5 +127,16 @@ func Validate(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"user": user,
+	})
+}
+
+func Logout(c *gin.Context) {
+	// Clear the cookie by setting its expiration time to the past
+	c.SetSameSite(http.SameSiteNoneMode)
+	c.SetCookie("Authorization", "", -1, "/", "localhost", true, true)
+
+	// Return a success response
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Logged out successfully",
 	})
 }

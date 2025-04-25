@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/ericheinitz/go-jwt/controllers"
+	"os"
+
 	"github.com/ericheinitz/go-jwt/initializers"
-	"github.com/ericheinitz/go-jwt/middleware"
+	"github.com/ericheinitz/go-jwt/routes"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,9 +17,8 @@ func init() {
 func main() {
 	router := gin.Default()
 
-	router.POST("/signup", controllers.Singup)
-	router.POST("/login", controllers.Login)
-	router.GET("/validate", middleware.RequireAuth, controllers.Validate)
+	initializers.SetupCors(router)
+	routes.AuthRoutes(router)
 
-	router.Run()
+	router.Run(":" + os.Getenv("PORT"))
 }
