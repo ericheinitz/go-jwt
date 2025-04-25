@@ -10,6 +10,7 @@ go.sum
 *.dll
 *.so
 *.dylib
+go-jwt
 
 # Archivos de salida
 *.log
