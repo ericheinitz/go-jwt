@@ -1,1 +1,23 @@
+# Archivos de entorno
 .env
+
+# Dependencias del módulo Go
+go.sum
+
+# Archivos de compilación
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Archivos de salida
+*.log
+
+# Directorios de compilación
+bin/
+obj/
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
