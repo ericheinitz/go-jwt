@@ -19,6 +19,7 @@ Makefile
 # Directorios de compilación
 bin/
 obj/
+dist/
 
 # Archivos de configuración de IDEs
 .vscode/
