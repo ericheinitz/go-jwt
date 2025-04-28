@@ -7,6 +7,11 @@ import (
 )
 
 func AuthRoutes(r *gin.Engine) {
+	r.GET("/healthcheck", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"status": "ok",
+		})
+	})
 	r.POST("/signup", controllers.Singup)
 	r.POST("/login", controllers.Login)
 	r.GET("/validate", middleware.RequireAuth, controllers.Validate)
